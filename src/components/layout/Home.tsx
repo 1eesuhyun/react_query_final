@@ -16,10 +16,10 @@ function Home(){
     if(isError){
         return <h1 className={"text-center"}>Error...{error?.message}</h1>
     }
-    console.log("전체 응답:", data);
+    /*console.log("전체 응답:", data);
     console.log("data?.data.image1:", data?.data);
     console.log("data?.data.main:", data?.data.main);
-    console.log("data?.data.main?.image1:", data?.data.main?.image1);
+    console.log("data?.data.main?.image1:", data?.data.main?.image1);*/
     return (
         <Fragment>
             <section className="categories_area clearfix" id="about">
@@ -223,18 +223,20 @@ function Home(){
                                 {/* Single Widget Area */}
                                 <div className="single-widget-area popular-post-widget">
                                     <div className="widget-title text-center">
-                                        <h6>서울 인기 맛집</h6>
+                                        <h6>제주 추천 여행지</h6>
                                     </div>
-                                    {/* Single Popular Post */}
-                                    <div className="single-populer-post d-flex">
-                                        <img src="" style={{"width": "165px", "height": "125px"}}/>
-                                        <div className="post-content">
-                                            <a href="#">
-                                                <h6></h6>
-                                            </a>
-                                            <p></p>
-                                        </div>
-                                    </div>
+                                    {
+                                        data?.data.jlist.map((jeju:TravelItem,index:number)=>
+                                            <div className="single-populer-post d-flex">
+                                                <img src={jeju.image1} alt=""/>
+                                                <div className="post-content">
+                                                    <a href="#">
+                                                        <h6>{jeju.title}</h6>
+                                                    </a>
+                                                    <p>{jeju.address}</p>
+                                                </div>
+                                            </div>
+                                        )}
                                 </div>
 
                                 {/* Single Widget Area */}

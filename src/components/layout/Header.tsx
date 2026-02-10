@@ -50,7 +50,7 @@ function Header() {
 
                         <div className="col-12">
                             <div className="logo_area text-center">
-                                <a href="index.html" className="yummy-logo">Yummy Blog</a>
+                                <Link to={"/"} className="yummy-logo">Korea</Link>
                             </div>
                         </div>
                     </div>
@@ -66,8 +66,8 @@ function Header() {
                                 <div className="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
                                     <ul className="navbar-nav" id="yummy-nav">
                                         <li className="nav-item active">
-                                            <a className="nav-link" href="index.html">Home <span
-                                                className="sr-only">(current)</span></a>
+                                            <Link className="nav-link" to={"/"}>Home <span
+                                                className="sr-only">(current)</span></Link>
                                         </li>
                                         <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle" href="#" id="yummyDropdown"
@@ -98,7 +98,7 @@ function Header() {
                                                role="button" data-toggle="dropdown" aria-haspopup="true"
                                                aria-expanded="false">제주</a>
                                             <div className="dropdown-menu" aria-labelledby="yummyDropdown">
-                                                <a className="dropdown-item" href="index.html">명소</a>
+                                                <Link className="dropdown-item" to={"/jeju/attraction"}>명소</Link>
                                                 <a className="dropdown-item" href="archive.html">쇼핑</a>
                                                 <a className="dropdown-item" href="single.html">음식</a>
                                                 <a className="dropdown-item" href="static.html">축제</a>

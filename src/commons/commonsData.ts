@@ -22,3 +22,27 @@ export interface MainData {
     blist:TravelItem[];
     jlist:TravelItem[];
 }
+
+export interface JejuItem {
+    address: string;
+    title: string;
+    image1: string;
+    x:number;
+    y:number;
+    hit:number;
+    contenttype:number;
+    contentid:number;
+    restdate:string;
+    infocenter:string;
+    parking:string;
+    msg:string;
+    usetime:string;
+}
+
+export interface JejuData {
+    list:JejuItem[];
+    curpage:number;
+    totalpage:number;
+    startPage:number;
+    endPage:number;
+}
