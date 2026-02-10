@@ -4,6 +4,7 @@ import {useNavigate, useParams} from 'react-router-dom'
 import {JejuData, JejuItem} from "../../commons/commonsData";
 import apiClient from "../../http-commons";
 import {AxiosResponse, AxiosError} from "axios";
+import MapPrint from "../../commons/MapPrint";
 
 interface DetailProps {
     data: {
@@ -114,7 +115,12 @@ function JejuAttractionDetail() {
                         <table className="table">
                             <tbody>
                             <tr>
-                                <td className={"text-center"}></td>
+                                <td className={"text-center"}>
+                                    {
+                                        jejuData &&
+                                        <MapPrint address={jejuData?.address} name={jejuData?.title}/>
+                                    }
+                                </td>
                             </tr>
                             </tbody>
                         </table>
