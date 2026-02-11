@@ -210,7 +210,7 @@ function Header() {
                                         {
                                             login &&
                                             <li className={"nav-item"}>
-                                                <a className={"nav-link"} href="#">챗봇</a>
+                                                <a className={"nav-link"} href="#">챗봇123</a>
                                             </li>
                                         }
                                         <li className={"nav-item"}>
