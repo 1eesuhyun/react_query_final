@@ -19,10 +19,13 @@ interface BoardListResponse {
 
 function BoardList() {
     const [curpage, setCurpage] = useState<number>(1);
-    const {isLoading,isError,error,data}=useQuery<{data:BoardListResponse}>({
+    const {isLoading,isError,error,data,refetch:hitIncrement}=useQuery<{data:BoardListResponse}>({
         queryKey:['board-list',curpage],
         queryFn: async()=>await boardClient.get(`/board/list_node?page=${curpage}`)
     })
+    useEffect(() => {
+        hitIncrement();
+    }, [curpage]);
     if(isLoading){
         return <h1 className={"text-center"}>Loading...</h1>
     }
@@ -80,7 +83,7 @@ function BoardList() {
                                 data?.data.list.map((board:BoardItem) =>
                                     <tr className="success">
                                         <td className={"text-center"}>{board.NO}</td>
-                                        <td>{board.SUBJECT}</td>
+                                        <td><Link to={"/board/detail/"+board.NO}>{board.SUBJECT}</Link></td>
                                         <td className={"text-center"}>{board.NAME}</td>
                                         <td className={"text-center"}>{board.DBDAY}</td>
                                         <td className={"text-center"}>{board.HIT}</td>

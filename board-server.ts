@@ -43,10 +43,10 @@ app.get("/board/list_node", async (req, res) => {
         `
         const total = await conn.execute(totalSql);
         const result = await conn.execute(listSql)
-        const totalpage=(total.rows as {TOTALPAGE:number}[])[0].TOTALPAGE
+        const totalpage = (total.rows as { TOTALPAGE: number }[])[0].TOTALPAGE
         console.log(result.rows)
         res.json({
-            curpage:page,
+            curpage: page,
             totalpage,
             list: result.rows
         });
@@ -60,20 +60,44 @@ app.get("/board/list_node", async (req, res) => {
     }
 })
 
-app.post("/board/insert_node",async (req, res) => {
+app.post("/board/insert_node", async (req, res) => {
     let conn;
-    const {name,subject,content,pwd} = req.body;
+    const {name, subject, content, pwd} = req.body;
 
     try {
         conn = await getConnection();
-        const sql=`
-            INSERT INTO board_1 (no,name,subject,content,pwd) VALUES (BR1_NO_SEQ.nextval,:name,:subject,:content,:pwd)
+        const sql = `
+            INSERT INTO board_1 (no, name, subject, content, pwd)
+            VALUES (BR1_NO_SEQ.nextval, :name, :subject, :content, :pwd)
         `
-        await conn.execute(sql,{name, subject,content,pwd},{autoCommit:true})
-        res.json({msg:'yes'})
+        await conn.execute(sql, {name, subject, content, pwd}, {autoCommit: true})
+        res.json({msg: 'yes'})
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({msg: 'no'});
+    } finally {
+        if (conn) {
+            await conn.close();
+        }
+    }
+})
+
+app.get("/board/detail_node", async (req, res) => {
+    let conn;
+    const no = Number(req.query.no)
+    try {
+        conn = await getConnection();
+        const sql1='UPDATE board_1 SET hit=hit+1 WHERE no=:no'
+        await conn.execute(sql1,{no},{autoCommit:true});
+
+        const sql2=`SELECT no, subject, name, hit, TO_CHAR(content) as content, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday FROM board_1 WHERE no=:no`
+        const result = await conn.execute(
+            sql2,
+            {no}
+        )
+        res.json(result.rows?.[0])
     }catch(err) {
         console.log(err);
-        res.status(500).json({msg:'no'});
     }
     finally {
         if (conn) {
