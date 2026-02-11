@@ -38,6 +38,14 @@ function Header() {
         id?:string;
         name?:string;
     }
+    /*
+        1. 결과값 받는 경우 => interface / type
+        2. 함수의 리턴형
+        3. 매개변수의 데이터형
+        ?. 데이터명 &&
+        일반 => ts파일
+        html리턴 => tsx파일
+     */
     // 로그인 버튼 눌렀을 때
     const {mutate:loginOk}=useMutation({
         mutationFn: async (data)=>{
