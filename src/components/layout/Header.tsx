@@ -217,7 +217,7 @@ function Header() {
                                             <a className={"nav-link"} href="archive.html">동영상</a>
                                         </li>
                                         <li className={"nav-item"}>
-                                            <a className={"nav-link"} href="#">커뮤니티</a>
+                                            <Link className={"nav-link"} to={"/board/list"}>커뮤니티</Link>
                                         </li>
                                     </ul>
                                 </div>
