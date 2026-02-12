@@ -88,8 +88,8 @@ function BoardDetail() {
                             </tr>
                             <tr>
                                 <td colSpan={4} className={"text-right"}>
-                                    <Link to={"/board/list"} className={"btn btn-outline-warning"}>수정</Link>&nbsp;
-                                    <Link to={"/board/list"} className={"btn btn-outline-danger"}>삭제</Link>&nbsp;
+                                    <Link to={"/board/update/"+board.NO} className={"btn btn-outline-warning"}>수정</Link>&nbsp;
+                                    <Link to={"/board/delete/"+board.NO} className={"btn btn-outline-danger"}>삭제</Link>&nbsp;
                                     <Link to={"/board/list"} className={"btn btn-outline-primary"}>목록</Link>
                                 </td>
                             </tr>

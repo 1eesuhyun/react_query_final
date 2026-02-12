@@ -210,11 +210,17 @@ function Header() {
                                         {
                                             login &&
                                             <li className={"nav-item"}>
-                                                <a className={"nav-link"} href="#">챗봇</a>
+                                                <Link className={"nav-link"} to={"/chat/chatbot"}>챗봇</Link>
                                             </li>
                                         }
-                                        <li className={"nav-item"}>
-                                            <a className={"nav-link"} href="archive.html">동영상</a>
+                                        <li className="nav-item dropdown">
+                                            <a className="nav-link dropdown-toggle" href="#" id="yummyDropdown"
+                                               role="button" data-toggle="dropdown" aria-haspopup="true"
+                                               aria-expanded="false">검색</a>
+                                            <div className="dropdown-menu" aria-labelledby="yummyDropdown">
+                                                <Link className="dropdown-item" to={"/youtube"}>동영상 검색</Link>
+                                                <Link className="dropdown-item" to={"/news"}>실시간 news</Link>
+                                            </div>
                                         </li>
                                         <li className={"nav-item"}>
                                             <Link className={"nav-link"} to={"/board/list"}>커뮤니티</Link>

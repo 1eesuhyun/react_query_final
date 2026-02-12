@@ -51,7 +51,7 @@ function JejuAttractionList() {
                     <div className="row">
                         {
                             data?.data.list && data?.data.list.map((jeju: JejuItem, index) =>
-                                <div className="col-12 col-md-6 col-lg-4">
+                                <div className="col-12 col-md-6 col-lg-4" key={index}>
                                     <div className="single-post wow fadeInUp" data-wow-delay="0.1s">
                                         <div className="post-thumb">
                                             <Link to={"/jeju/detail/" + jeju.contentid}>

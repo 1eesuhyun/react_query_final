@@ -156,7 +156,7 @@ function Home(){
 
                                 {
                                     data?.data.blist.map((busan:TravelItem,index) =>
-                                        <div className="col-12">
+                                        <div className="col-12" key={index}>
                                             <div className="list-blog single-post d-sm-flex wow fadeInUpBig"
                                                  data-wow-delay=".8s">
                                                 <div className="post-thumb">
@@ -227,7 +227,7 @@ function Home(){
                                     </div>
                                     {
                                         data?.data.jlist.map((jeju:TravelItem,index:number)=>
-                                            <div className="single-populer-post d-flex">
+                                            <div className="single-populer-post d-flex" key={index}>
                                                 <img src={jeju.image1} alt=""/>
                                                 <div className="post-content">
                                                     <a href="#">

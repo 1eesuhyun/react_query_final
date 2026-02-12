@@ -80,8 +80,8 @@ function BoardList() {
                             </thead>
                             <tbody>
                             {
-                                data?.data.list.map((board:BoardItem) =>
-                                    <tr className="success">
+                                data?.data.list.map((board:BoardItem,index) =>
+                                    <tr className="success" key={index}>
                                         <td className={"text-center"}>{board.NO}</td>
                                         <td><Link to={"/board/detail/"+board.NO}>{board.SUBJECT}</Link></td>
                                         <td className={"text-center"}>{board.NAME}</td>
